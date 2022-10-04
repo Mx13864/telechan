@@ -8,7 +8,7 @@ export default async function handle(req: NowRequest, res: NowResponse) {
 		await useWebhook(req, res);
 	} catch (e) {
 		res.statusCode = 500;
-//		res.json(e.message);
+		res.json(e.message);
 		
 	}
 }
