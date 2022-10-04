@@ -15,7 +15,7 @@ const sendkey = () => (ctx: any) => {
 
   const site_url = String(VERCEL_URL).split("-")[0]+'.vercel.app';
   sum++;
-  if(sum==1){
+  if(sum=1){
   replyToMessage(ctx, messageId, `${userName} , Your sendkey is 🔑 ${sendkey} \n 
   🚀 Use follow url to send message : \n 
   ${site_url}/api/send?sendkey=<sendkey>&text=<text>`);
