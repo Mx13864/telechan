@@ -46,7 +46,7 @@ async function localBot() {
 }
 
 export async function useWebhook(req: NowRequest, res: NowResponse) {
-	if(sum==0){
+
 	if( req.url?.substring(0,9) == '/api/send' ){
 
 		const text = req.query?.text || req.body?.text || "";
@@ -78,9 +78,11 @@ export async function useWebhook(req: NowRequest, res: NowResponse) {
 				}
 				
 				params.append("text",content);
-
+				if(sum==0){
 				const ret = await axios.post( "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage" , params );
 				res.status(200).json( ret.data );
+				sum++;
+				}	
 			}
 		}
 		
@@ -120,8 +122,6 @@ export async function useWebhook(req: NowRequest, res: NowResponse) {
 	} catch (error) {
 		console.error(error);
 		return error.message;
-	}
-		sum++;
 	}
 }
 
