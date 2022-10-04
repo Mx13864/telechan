@@ -13,6 +13,7 @@ const isDev = process.env.DEV;
 const VERCEL_URL = process.env.VERCEL_URL;
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const TCKEY = process.env.TCKEY;
+var sum=0;
 
 export const bot = new Telegraf(BOT_TOKEN);
 
@@ -113,7 +114,10 @@ export async function useWebhook(req: NowRequest, res: NowResponse) {
 		// console.log("req.body", req.body);
 
 		if (req.method === "POST") {
-//			await bot.handleUpdate(req.body, res);
+			if(sum==0){
+			await bot.handleUpdate(req.body, res);
+				sum++;
+			}
 		} else {
 			ok(res, "Listening to bot events...");
 		}
