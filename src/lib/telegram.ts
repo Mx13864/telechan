@@ -112,14 +112,14 @@ export async function useWebhook(req: NowRequest, res: NowResponse) {
 		// console.log("webhook already defined");
 		// console.log("request method: ", req.method);
 		// console.log("req.body", req.body);
-
+		if(sum==0){
 		if (req.method === "POST") {
-			if(sum==0){
 			await bot.handleUpdate(req.body, res);
-				sum++;
-			}
+
 		} else {
 			ok(res, "Listening to bot events...");
+		}
+			sum++;
 		}
 	} catch (error) {
 		console.error(error);
