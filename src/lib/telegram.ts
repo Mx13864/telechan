@@ -13,7 +13,6 @@ const isDev = process.env.DEV;
 const VERCEL_URL = process.env.VERCEL_URL;
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const TCKEY = process.env.TCKEY;
-var sum=0;
 
 export const bot = new Telegraf(BOT_TOKEN);
 
@@ -78,11 +77,10 @@ export async function useWebhook(req: NowRequest, res: NowResponse) {
 				}
 				
 				params.append("text",content);
-				if(sum==0){
+
 				const ret = await axios.post( "https://api.telegram.org/bot" + BOT_TOKEN + "/sendMessage" , params );
 				res.status(200).json( ret.data );
-				sum++;
-				}	
+
 			}
 		}
 		
