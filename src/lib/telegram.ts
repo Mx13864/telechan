@@ -13,6 +13,8 @@ const isDev = process.env.DEV;
 const VERCEL_URL = process.env.VERCEL_URL;
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const TCKEY = process.env.TCKEY;
+let a = process.env.TCKEY;
+let b = 0;
 
 export const bot = new Telegraf(BOT_TOKEN);
 
@@ -23,8 +25,13 @@ function botUtils() {
 // 	bot.start(ctx => {
 // 		return ctx.reply("This is a test bot.");
 // 	});
-
+	
+	if(a==TCKEY){
+		if(b==0){
 	bot.command("about", about()).command("sendkey", sendkey()).on("text", greeting());
+		}
+		b++;
+	}
 }
 
 async function localBot() {
